@@ -1,8 +1,6 @@
-
 from database.connection import DatabaseConnection
 from models.signup import Signup
 from models.login import Login
-
 
 def main_menu():
     db = DatabaseConnection()
@@ -34,7 +32,7 @@ def main_menu():
             Login()
 
         elif choice == "3":
-            print(" Exiting the system. Goodbye!")
+            print("👋 Exiting the system. Goodbye!")
             db.close()
             break
         else:

@@ -1,1 +1,4 @@
-SELECT email FROM users WHERE email = 'rashid@gmail.com' AND password = '1234';
+UPDATE users
+SET password = '1234'
+WHERE email = 'ali@gmail.com';
+

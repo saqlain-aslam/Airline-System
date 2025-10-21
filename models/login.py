@@ -1,4 +1,6 @@
 from database.connection import DatabaseConnection
+from utils.usermenu import user_menu
+
 
 def Login():
 
@@ -19,7 +21,6 @@ def Login():
     SELECT email FROM users WHERE email = %s AND password = %s;
     """
     
-   
     cursor.execute(sql_query,(email, password))
     test_user = cursor.fetchall()
      
@@ -27,6 +28,7 @@ def Login():
     if( test_user):
         print("\n ✔ Login Successfully!")
         print("*" * 50)
+        user_menu()
 
     else:
        print("❌ Kindly enter valid credentials and If you don't have account Signup first!")
