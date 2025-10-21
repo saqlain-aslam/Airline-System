@@ -1,2 +1,1 @@
-SELECT * FROM users
-LIMIT 3;
+SELECT email FROM users WHERE email = 'rashid@gmail.com' AND password = '1234';

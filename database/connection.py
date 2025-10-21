@@ -23,10 +23,10 @@ class DatabaseConnection:
                 password=self.password,
                 port=self.port
             )
-            print(" Database connected successfully!") 
+            print("✔ Database connected successfully!") 
             # print(os.getcwd()) 
         except Exception as e:
-            print(" Error connecting to database:", e)
+            print("❌ Error connecting to database:", e)
 
     def get_cursor(self):
         if self.connection:
@@ -39,7 +39,7 @@ class DatabaseConnection:
             # return cursor
             
         else:
-            print("No active database connection.")
+            print("❌ No active database connection.")
             return None
 
     def commit(self):
@@ -49,4 +49,4 @@ class DatabaseConnection:
     def close(self):
         if self.connection:
             self.connection.close()
-            print(" Database connection closed.")
+            print("🔓 Database connection closed.")
