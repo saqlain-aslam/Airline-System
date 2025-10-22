@@ -1,9 +1,5 @@
 from database.connection import DatabaseConnection
 from user.flights import Flights
-from user.changPswd import ChangePassword
-from user.buyTicket import BuyTicket
-from user.myTicket import MyTicket
-from user.cancelTicket import TicketCancel
 
 def user_menu():
     db = DatabaseConnection()
@@ -11,12 +7,12 @@ def user_menu():
 
     while True:
 
-        print("\n=== Passenger MENU ===")
+        print("\n=== Admin MENU ===")
         print("1. Check Flights Schedule 📅")
-        print("2. Buy Ticket")
-        print("3. My Booked Tickets")
-        print("4. Cancel Ticket")
-        print("5. Change Password")
+        print("2. Add new Route")
+        print("3. Remove Existing Route")
+        print("4. Add new Plane")
+        print("5. Remove Plane")
         print("6. Exit!")
 
         choice = input("\n Enter your choice: ")
@@ -26,21 +22,16 @@ def user_menu():
             Flights()
 
         elif choice == "2":
-            print("\n Buy Ticket!")
-            BuyTicket()
+            print("\n Add new Route")
         
         elif choice == "3":
-            print("\n My Booked Tickets!")
-            MyTicket()
+            print("\n Remove Existing Route")
         
         elif choice == "4":
-            print("\n Cancel Ticekt!")
-            TicketCancel()
+            print("\n Add new Plane")
 
         elif choice == "5":
-            print("\n Change Password!")
-            ChangePassword()
-
+            print("\n Remove Plane")
         
         elif choice == "6":
             print("👋 Exiting the system. Goodbye!")

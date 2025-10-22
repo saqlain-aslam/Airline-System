@@ -1,4 +1,3 @@
-
 from utils.menu import main_menu
 
 def main():
