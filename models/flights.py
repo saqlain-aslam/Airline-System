@@ -13,14 +13,29 @@ def Flights():
     print("*" * 50)
 
     flight_query = """
-    SELECT * FROM routes;
+    SELECT * FROM routes
+    WHERE departure_time > now();
     """
     
     cursor.execute(flight_query)
     flights = cursor.fetchall()
 
-    for flight in flights:
-        print(f"🛫 Flight ID: {flight[0]}, 🌍 Origin: {flight[1]}, 🌟 Destination: {flight[2]}, ⌚ Departure Time: {flight[3]}, ⏲ Arrival Time: {flight[4]}, ✈ Plane: {flight[5]} \n")
+    if cursor.rowcount > 0:
+        print("✈✈✈✈    Available Flights:    ✈✈✈✈")
         
+        for flight in flights:
+            print("\n" + "✈️  FLIGHT INFORMATION".center(60, "="))
+            print(f"""
+            | Flight ID        : {flight[0]}
+            | Origin           : {flight[1]}
+            | Destination      : {flight[2]}
+            | Departure Time   : {flight[3]}
+            | Arrival Time     : {flight[4]}
+            | Plane Assigned   : {flight[5]}
+            """)
+            print("=" * 60)
+    else:
+        print("😢 Sorry currently we don't have avalable flights for you!")
+
 
 

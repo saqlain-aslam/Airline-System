@@ -39,12 +39,14 @@ def Signup():
            db.commit()
            print("\n ✔ Signup Completed!")
            print("*" * 50)
+           
            user_menu()
         else:
             print("❌ Kindly enter complete data")
     else:
         print("\n ❌ Email already exists. Please go for Login!")
 
+    
 
 
 

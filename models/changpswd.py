@@ -18,7 +18,7 @@ def ChangePassword():
     passsword_query = """
     UPDATE users
     SET password = %s
-    WHERE email = %s;1
+    WHERE email = %s;
     
     """
     
