@@ -1,10 +1,8 @@
 from database.connection import DatabaseConnection
 from session.sessionManager import session
 
-
 def BuyTicket():
     try:
-
         db = DatabaseConnection()
         db.connect()
         cursor = db.get_cursor()
@@ -61,7 +59,7 @@ def BuyTicket():
           print(f"\n  🚨 Seat number {seat_number} in flight {flight_id} is already booked by someone! Kindly select another seat.")
           return
      
-    
+     
         luggage_weight = float(input("\n Enter your luggage weight:"))
         gender = input("\n Enter your gender(Male/Female):").strip().capitalize()
 

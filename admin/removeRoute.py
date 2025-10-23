@@ -14,23 +14,25 @@ def RemoveRoute():
 
         route_id = str(input("\n Enter Route ID:"))
 
+        if(route_id):
+            pass
+        else:
+            print("❌ Kindly enter complete data")
 
         sql_query = """
         DELETE FROM routes
         WHERE
         route_id = %s;
         """
-
-
-        if(route_id):
-           cursor.execute(sql_query,(route_id,))
-           db.commit()
-           print(f"\n ✔ Route {route_id} removed!")
-           print("*" * 50)
-           
+        cursor.execute(sql_query,(route_id,))
+        db.commit()
+        
+        if cursor.rowcount > 0:
+            print(f"\n ✔ Route {route_id} removed!")
+            print("*" * 50)
         else:
-            print("❌ Kindly enter complete data")
-    
+            print("🚨 Kindly enter correct ID")    
+            return
     except Exception as e:
         print("⚠️ Unexpected Error:", e)
     

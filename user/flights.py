@@ -1,4 +1,6 @@
 from database.connection import DatabaseConnection
+from session.sessionManager import session
+
 
 def Flights():
     try:
@@ -13,10 +15,21 @@ def Flights():
         print("\n ✈ Following are the schedule Flights! \n")
         print("*" * 50)
 
-        flight_query = """
-        SELECT * FROM routes
-        WHERE departure_time > now();
-        """
+        # flight_query = """
+        # SELECT * FROM routes
+        #     WHERE departure_time > now();
+        # """
+        user = session.get_user()
+
+        if user:
+            flight_query = """
+            SELECT * FROM routes
+            WHERE departure_time > now();
+            """
+        else:
+            flight_query = """
+            SELECT * FROM routes;
+            """
     
         cursor.execute(flight_query)
         flights = cursor.fetchall()

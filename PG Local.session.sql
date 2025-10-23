@@ -1,3 +1,10 @@
+SELECT plane_id, departure_time
+FROM routes
+WHERE  departure_time = '2025-10-22 12:00:00' and plane_id = 'p2';
+
+
+
+
 -- SELECT t.ticket_id, u.name AS passenger, r.origin, r.destination, p.name AS plane_name, r.departure_time,   r.arrival_time
 --     FROM ticket t
 --     JOIN users u ON t.user_id = u.id
@@ -15,6 +22,6 @@
 -- WHERE departure_time > now();
 
 
-INSERT INTO users(name,email,gender,password)
-VALUES
-('ADMIN', 'adminMountsol@gmail.com','Male','Admin@2134');
+-- INSERT INTO users(name,email,gender,password)
+-- VALUES
+-- ('ADMIN', 'adminMountsol@gmail.com','Male','Admin@2134');

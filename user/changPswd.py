@@ -21,8 +21,9 @@ def ChangePassword():
       SET password = %s
       WHERE email = %s;
       """
-    
-      password_change = cursor.execute(passsword_query, (password,email))
+      # password_change = cursor.execute(passsword_query, (password,email))
+      cursor.execute(passsword_query, (password,email))
+      
       db.commit()
 
       # print(f"passwor change: {password_change}")
