@@ -1,6 +1,8 @@
 from database.connection import DatabaseConnection
-from models.signup import Signup
-from models.login import Login
+from user.signup import Signup
+from user.login import Login
+from session.sessionManager import session
+
 
 def main_menu():
     db = DatabaseConnection()
@@ -33,6 +35,7 @@ def main_menu():
 
         elif choice == "3":
             print("👋 Exiting the system. Goodbye!")
+            session.clear_user()
             db.close()
             break
         else:

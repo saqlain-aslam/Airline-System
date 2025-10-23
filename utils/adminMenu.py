@@ -1,7 +1,12 @@
 from database.connection import DatabaseConnection
 from user.flights import Flights
+from admin.addPlane import AddPlane
+from admin.newRoute import AddRoute
+from admin.removePlane import RemovePlane
+from admin.removeRoute import RemoveRoute
+from admin.adminFlights import AdminFlights
 
-def user_menu():
+def admin_menu():
     db = DatabaseConnection()
     db.connect()
 
@@ -19,19 +24,23 @@ def user_menu():
 
         if choice == "1":
             print("\n Checks Flight schedule:")
-            Flights()
+            AdminFlights()
 
         elif choice == "2":
             print("\n Add new Route")
+            AddRoute()
         
         elif choice == "3":
             print("\n Remove Existing Route")
+            RemoveRoute()
         
         elif choice == "4":
             print("\n Add new Plane")
+            AddPlane()
 
         elif choice == "5":
             print("\n Remove Plane")
+            RemovePlane()
         
         elif choice == "6":
             print("👋 Exiting the system. Goodbye!")

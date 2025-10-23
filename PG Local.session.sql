@@ -11,5 +11,10 @@
 -- WHERE  seat_number = 12 and route_id = 'R002';
 
 
-SELECT * FROM routes
-WHERE departure_time > now();
+-- SELECT * FROM routes
+-- WHERE departure_time > now();
+
+
+INSERT INTO users(name,email,gender,password)
+VALUES
+('ADMIN', 'adminMountsol@gmail.com','Male','Admin@2134');

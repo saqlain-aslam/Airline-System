@@ -1,6 +1,6 @@
 from database.connection import DatabaseConnection
 
-def Flights():
+def AdminFlights():
     try:
 
         db = DatabaseConnection()
@@ -10,12 +10,11 @@ def Flights():
     
         print("*" * 50 )
     
-        print("\n ✈ Following are the schedule Flights! \n")
+        print("\n ✈ Following are the All schedule Flights! \n")
         print("*" * 50)
 
         flight_query = """
-        SELECT * FROM routes
-        WHERE departure_time > now();
+        SELECT * FROM routes;
         """
     
         cursor.execute(flight_query)

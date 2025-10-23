@@ -1,7 +1,7 @@
 from database.connection import DatabaseConnection
 
-def RemoveRoute():
-    try:
+def RemoveUser():
+    try:     
 
         db = DatabaseConnection()
         db.connect()
@@ -9,28 +9,28 @@ def RemoveRoute():
         cursor = db.get_cursor()
     
         print("*" * 50 )
-        print("\n 💻 Enter data to remove Route! \n")
+        print("\n 💻 Enter data to remove User! \n")
         print("*" * 50)
 
-        route_id = str(input("\n Enter Route ID:"))
+        name = str(input("\n Enter user name:"))
+        email = str(input("\n Enter user email:"))
 
 
         sql_query = """
-        DELETE FROM routes
+        DELETE FROM users
         WHERE
-        route_id = %s;
+        name = %s AND email = %s;
         """
 
-
-        if(route_id):
-           cursor.execute(sql_query,(route_id,))
+        if(name and email):
+           cursor.execute(sql_query,(name,email))
            db.commit()
-           print(f"\n ✔ Route {route_id} removed!")
+           print(f"\n ✔ {name} removed!")
            print("*" * 50)
            
         else:
             print("❌ Kindly enter complete data")
-    
+   
     except Exception as e:
         print("⚠️ Unexpected Error:", e)
     

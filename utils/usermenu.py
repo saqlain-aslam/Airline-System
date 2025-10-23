@@ -4,6 +4,7 @@ from user.changPswd import ChangePassword
 from user.buyTicket import BuyTicket
 from user.myTicket import MyTicket
 from user.cancelTicket import TicketCancel
+from session.sessionManager import session
 
 def user_menu():
     db = DatabaseConnection()
@@ -18,6 +19,7 @@ def user_menu():
         print("4. Cancel Ticket")
         print("5. Change Password")
         print("6. Exit!")
+
 
         choice = input("\n Enter your choice: ")
 
@@ -44,6 +46,7 @@ def user_menu():
         
         elif choice == "6":
             print("👋 Exiting the system. Goodbye!")
+            session.clear_user()
             db.close()
             break
 

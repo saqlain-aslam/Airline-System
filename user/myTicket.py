@@ -1,4 +1,6 @@
 from database.connection import DatabaseConnection
+from session.sessionManager import session
+
 
 def MyTicket():
 
@@ -10,7 +12,19 @@ def MyTicket():
     print("\n 💻 My Booked Tickets! \n")
     print("*" * 50)
 
-    user_id = input("Enter your User ID: ")
+
+    user = session.get_user()
+
+    if user:
+    #   print(f" Logged in as:  (ID: {user['id']})")
+      pass
+    else:
+       print("❌ No user is currently logged in.")
+       return  
+ 
+    user_id = user.get('id')   
+    # print(user_id)
+
 
     myticket_query = """
     SELECT t.ticket_id, u.name AS passenger, r.origin, r.destination, p.name AS plane_name, r.departure_time, r.arrival_time, t.seat_number

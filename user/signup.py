@@ -1,5 +1,6 @@
 from database.connection import DatabaseConnection
 from utils.userMenu import user_menu
+from session.sessionManager import session
 
 def Signup():
 
@@ -18,13 +19,25 @@ def Signup():
     gender = str(input("\n Enter your gender:"))
     password = str(input("\n Enter your password:"))
 
+    if(email,gender,name,password):
+        pass
+    else:
+        print("Kindly enter complete data")
+        return
+    
+    
     email_query = """
     SELECT email FROM users WHERE email = %s;
     """
 
     cursor.execute(email_query, (email,))
     test_email = cursor.fetchall()
+    
+    if test_email:
+        print("\n ❌ Email already exists. Please go for Login!")
+        return
 
+    
 
     sql_query = """
     INSERT INTO users(name,email,gender,password)
@@ -33,18 +46,19 @@ def Signup():
     """
 
 
-    if (not test_email):
-        if( name and email and gender and password):
-           cursor.execute(sql_query,(name,email,gender,password))
-           db.commit()
-           print("\n ✔ Signup Completed!")
-           print("*" * 50)
+    cursor.execute(sql_query,(name,email,gender,password))
+    user_id = cursor.fetchone()[0]
+    db.commit()
+    print("\n ✔ Signup Completed!")
+    print("*" * 50)
            
-           user_menu()
-        else:
-            print("❌ Kindly enter complete data")
-    else:
-        print("\n ❌ Email already exists. Please go for Login!")
+    session.set_user({
+        "id": user_id,
+        "name": name,
+        "email": email,
+    })
+
+    user_menu()
 
     
 
